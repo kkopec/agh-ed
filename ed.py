@@ -1,10 +1,7 @@
-from ed.wwodataprovider import WWODataProvider
-from ed.wwoadapter import WWOAdapter
+from ed.noaa import NoaaDataProvider
 from proverbs.kwiecien import Kwiecien
 
 if __name__ == "__main__":
-    dp = WWODataProvider()
-    kwiecien = Kwiecien(dp, WWOAdapter)
-    kwiecien.run()
-
-
+    kwiecien = Kwiecien(NoaaDataProvider)
+    res = kwiecien.run()
+    print('Kwiecien: {0}/{1}'.format(sum(x for x in res), len(res)))
