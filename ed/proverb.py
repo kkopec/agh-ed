@@ -1,35 +1,26 @@
-import matplotlib.pyplot as plt
-
-
 class Proverb:
     def __init__(self, data_provider):
         self.data_provider = data_provider()
         self.data = {}
+        self.results = {}
 
     def populate_data(self):
-        for year in self.data_provider.fetch_data():
-            self.data[year] = self.data_provider.filter_data(self.build_filter(year))
+        for place in self.data_provider.get_places():
+            self.data[place] = {}
+            for year in self.data_provider.fetch_data(place):
+                self.data[place][year] = self.data_provider.filter_data(self.build_filter(year))
 
     def process_data(self):
-        return [self.process_year(y) for y in self.data.keys()]
+        for place in self.data_provider.get_places():
+            self.results[place] = [self.process_year(place, y) for y in self.data[place].keys()]
 
     def run(self):
         self.populate_data()
-        return self.process_data()
-
-    def show_plot(self, year, param):
-        y = [d.get(param) for d in self.data[year]]
-        x = [d.get('date') for d in self.data[year]]
-
-        plt.plot(x, y, 'ro', x, y, 'k')
-        plt.grid(True)
-        plt.title('{0} - {1}'.format(param, year))
-        plt.xlabel('day')
-        plt.ylabel(param)
-        plt.show()
+        self.process_data()
+        return self.results
 
     def build_filter(self, year):
         pass
 
-    def process_year(self, year):
+    def process_year(self, place, year):
         pass

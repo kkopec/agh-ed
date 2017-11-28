@@ -6,10 +6,17 @@ class Place(Enum):
     BALICE = "BaliceNew"
     SIEDLCE = "SiedlceNew"
 
+    @classmethod
+    def all(cls):
+        return [place.value for place in cls]
+
 
 class NoaaDataProvider:
     def __init__(self):
         self.data = None
+
+    def get_places(self):
+        return Place.all()
 
     def fetch_data(self, place=Place.BALICE.value):
         xls = pd.ExcelFile('data/noaa/{0}.xls'.format(place))

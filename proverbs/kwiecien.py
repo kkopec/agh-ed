@@ -17,11 +17,14 @@ class Kwiecien(Proverb):
     def __init__(self, data_provider):
         super().__init__(data_provider)
 
+    def __repr__(self):
+        return u"Kwiecień"
+
     def build_filter(self, year):
         return lambda sheet: sheet[(sheet['DATE'] >= '{0}-04'.format(year)) & (sheet['DATE'] < '{0}-05'.format(year))]
 
-    def process_year(self, year):
-        sheet = self.data[year]
+    def process_year(self, place, year):
+        sheet = self.data[place][year]
 
         # check avgs
         avg_temps = [float(x) for x in list(sheet[(~sheet['TAVG'].isin(['-']))]['TAVG'])]
