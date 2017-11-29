@@ -5,8 +5,8 @@ import inspect
 PROVIDER = NoaaDataProvider
 
 
-def test_proverb(proverb_class):
-    proverb = proverb_class(PROVIDER)
+def test_proverb(Proverb):
+    proverb = Proverb(PROVIDER)
     res = proverb.run()
     format_results(proverb, res)
 
@@ -18,6 +18,6 @@ def format_results(proverb, results):
 
 
 if __name__ == "__main__":
-    proverbs_list = inspect.getmembers(proverbs, inspect.isclass)
-    [test_proverb(proverb) for (name, proverb) in proverbs_list]
+    Proverbs = inspect.getmembers(proverbs, inspect.isclass)
+    [test_proverb(Proverb) for (name, Proverb) in Proverbs]
 
