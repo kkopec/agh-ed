@@ -1,3 +1,4 @@
 from proverbs.kwiecien import Kwiecien
 from proverbs.katarzyna import Katarzyna
-from proverbs.styczen_wiosna import StyczenWiosna
+from proverbs.cieplo_zimno import StyczenWiosna
+from proverbs.cieplo_zimno import LutyCieply
