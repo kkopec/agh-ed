@@ -14,7 +14,7 @@ def test_proverb(proverb_class):
 def format_results(proverb, results):
     print('-------------------------------')
     print('# {0}:'.format(proverb))
-    [print('    - {0}:\t{1}/{2}'.format(k, sum(x for x in v), len(v))) for (k, v) in results.items()]
+    [print('    - {0: <12}{1}/{2}'.format(k, sum(x for x in v), len(v))) for (k, v) in results.items()]
 
 
 if __name__ == "__main__":

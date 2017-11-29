@@ -14,9 +14,14 @@ class Proverb:
         for place in self.data_provider.get_places():
             self.results[place] = [self.process_year(place, y) for y in self.data[place].keys()]
 
+    def cleanup_results(self):
+        for place in self.data_provider.get_places():
+            self.results[place] = [res for res in self.results[place] if res is not None]
+
     def run(self):
         self.populate_data()
         self.process_data()
+        self.cleanup_results()
         return self.results
 
     def build_filter(self, year):

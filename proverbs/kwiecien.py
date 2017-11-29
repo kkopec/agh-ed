@@ -18,7 +18,7 @@ class Kwiecien(Proverb):
         super().__init__(data_provider)
 
     def __repr__(self):
-        return u"Kwiecień"
+        return u"Kwiecień plecień, bo przeplata trochę zimy trochę lata"
 
     def build_filter(self, year):
         return lambda sheet: sheet[(sheet['DATE'] >= '{0}-04'.format(year)) & (sheet['DATE'] < '{0}-05'.format(year))]

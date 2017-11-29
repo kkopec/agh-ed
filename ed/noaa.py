@@ -3,7 +3,9 @@ import pandas as pd
 
 
 class Place(Enum):
-    BALICE = "BaliceNew"
+    BALICE  = "BaliceNew"
+    LEBA    = "ŁebaNew"
+    OKECIE  = "OkecieNew"
     SIEDLCE = "SiedlceNew"
 
     @classmethod
