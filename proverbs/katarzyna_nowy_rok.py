@@ -2,7 +2,7 @@ from functools import reduce
 from ed.proverb import Proverb
 
 
-class Katarzyna(Proverb):
+class KatarzynaNowyRok(Proverb):
     """
     Jak się Katarzyna(25.11) głosi, tak się nowy rok nosi
 

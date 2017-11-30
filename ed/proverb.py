@@ -24,6 +24,11 @@ class Proverb:
         self.cleanup_results()
         return self.results
 
+    def print_summary(self):
+        print('-------------------------------')
+        print('# {0}:'.format(self))
+        [print('    - {0: <10}{1}/{2}'.format(place, sum(r for r in res), len(res))) for (place, res) in self.results.items()]
+
     def build_filter(self, year):
         pass
 
