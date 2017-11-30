@@ -1,6 +1,6 @@
-from ed.noaa import NoaaDataProvider
-import proverbs
 import inspect
+import proverbs
+from ed.noaa import NoaaDataProvider
 
 PROVIDER = NoaaDataProvider
 

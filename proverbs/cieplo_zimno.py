@@ -55,31 +55,3 @@ class CieploZimno(Proverb):
         return [float(x) for x in list(sheet[((sheet['DATE'] >= '{0}-{1:02d}'.format(year, month)) & (
                 sheet['DATE'] < '{0}-{1:02d}'.format(year, month + 1))) &
                                              (~sheet['TAVG'].isin(['-']))]['TAVG'])]
-
-
-class StyczenWiosna(CieploZimno):
-    """
-    Bój się w styczniu wiosny, bo marzec zazdrosny
-
-    łagodna pogoda w styczniu zapowiada mrozy w marcu
-    
-    średnia temperatura ze stycznia z wielu lat, tak samo z marca 
-    i jeśli w konkretnym roku w styczniu jest wyższa niż ogólna 
-    to w marcu powinna być niższa niż ogólna
-    """
-    month_warm = 1
-    month_cold = 3
-
-    def __repr__(self):
-        return u"Bój się w styczniu wiosny, bo marzec zazdrosny"
-
-
-class LutyCieply(CieploZimno):
-    """
-    Gdy ciepło w lutym, zimno w marcu bywa, długo potrwa zima, rzecz to niewątpliwa
-    """
-    month_warm = 2
-    month_cold = 3
-
-    def __repr__(self):
-        return u"Gdy ciepło w lutym, zimno w marcu bywa, długo potrwa zima, rzecz to niewątpliwa"
