@@ -15,6 +15,17 @@ class Place(Enum):
         return [place.value for place in cls]
 
 
+class Param(Enum):
+    TAVG = "TAVG"
+    TMAX = "TMAX"
+    TMIN = "TMIN"
+    PRCP = "PRCP"
+
+    @classmethod
+    def all(cls):
+        return [param.value for param in cls]
+
+
 class NoaaDataProvider:
     def __init__(self):
         self.data = None
