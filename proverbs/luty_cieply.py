@@ -1,12 +1,12 @@
-from proverbs.cieplo_zimno import CieploZimno
+from proverbs.correspondence import Warm2Cold
 
 
-class LutyCieply(CieploZimno):
+class LutyCieply(Warm2Cold):
     """
     Gdy ciepło w lutym, zimno w marcu bywa, długo potrwa zima, rzecz to niewątpliwa
     """
-    month_warm = 2
-    month_cold = 3
+    FIRST_MONTH = 2
+    SECOND_MONTH = 3
 
     def __repr__(self):
         return u"Gdy ciepło w lutym, zimno w marcu bywa, długo potrwa zima, rzecz to niewątpliwa"
