@@ -1,6 +1,7 @@
 from proverbs.katarzyna_boze_narodzenie import KatarzynaBozeNarodzenie
 from proverbs.katarzyna_nowy_rok import KatarzynaNowyRok
 from proverbs.kwiecien import Kwiecien
+from proverbs.listopad_marzec import Listopad3Marzec
 from proverbs.luty_cieply import LutyCieply
 from proverbs.styczen_wiosna import StyczenWiosna
 from proverbs.zoska import ZimnaZoska
