@@ -12,9 +12,6 @@ class KatarzynaNowyRok(Proverb):
     MAX_TEMP_DIFF=2
     MAX_PRCP_DIFF=1
 
-    def __init__(self, data_provider):
-        super().__init__(data_provider)
-
     def __repr__(self):
         return u"Jak się Katarzyna głosi, tak się nowy rok nosi"
 

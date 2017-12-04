@@ -9,9 +9,6 @@ class ZimnaZoska(Proverb):
     """
     LOW_TEMP = 3
 
-    def __init__(self, data_provider):
-        super().__init__(data_provider)
-
     def __repr__(self):
         return u"Zimnej Zośki/Zimnych Ogrodników"
 

@@ -8,9 +8,6 @@ class KatarzynaBozeNarodzenie(Proverb):
     temperatura > 0 w 25.11 to 25.12 temperatura < 0
     """
 
-    def __init__(self, data_provider):
-        super().__init__(data_provider)
-
     def __repr__(self):
         return u"Na Katarzyny gęś po wodzie, Boże Narodzenie po lodzie"
 

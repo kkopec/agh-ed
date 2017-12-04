@@ -14,9 +14,6 @@ class Kwiecien(Proverb):
     MAX_TEMP = 17
     DAYS_THRESHOLD = 5
 
-    def __init__(self, data_provider):
-        super().__init__(data_provider)
-
     def __repr__(self):
         return u"Kwiecień plecień, bo przeplata trochę zimy trochę lata"
 
