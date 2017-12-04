@@ -5,6 +5,7 @@ from proverbs.listopad_marzec import Listopad3Marzec
 from proverbs.luty_cieply import LutyCieply
 from proverbs.styczen_wiosna import StyczenWiosna
 from proverbs.zoska import ZimnaZoska
+from proverbs.walentynki_deszcz import WalentynkiDeszcz
 from proverbs.wigilia_miesiace import \
     D2M13Styczen,\
     D2M14Luty,\

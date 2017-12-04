@@ -85,6 +85,16 @@ class Day2Month(Correspondence):
         return day_diff * month_diff >= 0 and abs(day_diff - month_diff) <= self.MIN_DIFF
 
 
+class Day2Period(Correspondence):
+
+    def get_day_data(self, place, year, param, index=0):
+        sheet = self.data[place][year][index]
+        return [float(x) for x in list(sheet[(~sheet[param].isin(['-']))][param])]
+
+    def get_period_data(self, place, year, param=Param.TAVG.value, index=1):
+        return self.get_month_data(place, year, param, index)
+
+
 class Month2Month(Correspondence):
     FIRST_MONTH = None
     SECOND_MONTH = None
