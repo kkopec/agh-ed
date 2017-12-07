@@ -1,37 +1,29 @@
-from functools import reduce
-from ed.proverb import Proverb
+from ed.noaa import Param
+from proverbs.correspondence import Day2Day
 
 
-class KatarzynaNowyRok(Proverb):
-    """
-    Jak się Katarzyna(25.11) głosi, tak się nowy rok nosi
-
-    Maksymalna różnica średnich temperatur: 2
-    Podobne opady
-    """
-    MAX_TEMP_DIFF=2
-    MAX_PRCP_DIFF=1
+class KatarzynaNowyRok(Day2Day):
+    MAX_TEMP_DIFF = 2
+    MAX_PRCP_DIFF = 1
 
     def __repr__(self):
         return u"Jak się Katarzyna głosi, tak się nowy rok nosi"
 
     def build_filter(self, year):
-        return lambda sheet: sheet[(sheet['DATE'] == '{0}-11-25'.format(year)) | (sheet['DATE'] == '{0}-01-01'.format(year+1))]
+        return lambda sheet: (sheet[(sheet['DATE'] == '{0}-11-25'.format(year))],
+                              sheet[(sheet['DATE'] == '{0}-01-01'.format(year+1))])
 
     def process_year(self, place, year):
-        sheet = self.data[place][year]
+        kat_t, nr_t = self.get_first_day_data(place, year), self.get_second_day_data(place, year)
+        kat_p, nr_p = self.get_first_day_data(place, year, Param.PRCP.value), self.get_second_day_data(place, year, Param.PRCP.value)
 
-        avg_temps = [float(x) for x in list(sheet[(~sheet['TAVG'].isin(['-']))]['TAVG'])]
-        precip    = [float(x) for x in list(sheet[(~sheet['PRCP'].isin(['-']))]['PRCP'])]
-
-        # pair of values needed
-        if len(avg_temps) != 2 or len(precip) != 2:
+        if None in [kat_t, nr_t, kat_p, nr_p]:
             return None
 
-        diff_temp = self.compare_days(avg_temps)
-        diff_prcp = self.compare_days(precip)
+        diff_temp = self.compare_days(kat_t, nr_t)
+        diff_prcp = self.compare_days(kat_p, nr_p)
 
         return diff_temp <= self.MAX_TEMP_DIFF and diff_prcp <= self.MAX_PRCP_DIFF
 
-    def compare_days(self, days):
-        return reduce((lambda x,y: abs(abs(x)-abs(y))), days)
+    def compare_days(self, day1, day2):
+        return abs(abs(day1)-abs(day2))

@@ -13,7 +13,7 @@ class Correspondence(Proverb):
         self.cleanup_results()
         return self.results
 
-    def get_month_data(self, place, year, param=Param.TAVG.value, index=0):
+    def get_period_data(self, place, year, param=Param.TAVG.value, index=0):
         sheet = self.data[place][year][index]
         return [float(x) for x in list(sheet[(~sheet[param].isin(['-']))][param])]
 
@@ -73,7 +73,7 @@ class Day2Month(Correspondence):
         return [float(x) for x in list(sheet[(~sheet[param].isin(['-']))][param])]
 
     def get_month_data(self, place, year, param=Param.TAVG.value, index=1):
-        return super().get_month_data(place, year, param, index)
+        return self.get_period_data(place, year, param, index)
 
     def compare_day_to_month(self, place, param, day, month):
         """
@@ -85,6 +85,17 @@ class Day2Month(Correspondence):
         return day_diff * month_diff >= 0 and abs(day_diff - month_diff) <= self.MIN_DIFF
 
 
+class Day2Day(Correspondence):
+
+    def get_first_day_data(self, place, year, param=Param.TAVG.value, index=0):
+        day = self.get_period_data(place, year, param, index)
+        return day[0] if len(day) else None
+
+    def get_second_day_data(self, place, year, param=Param.TAVG.value, index=1):
+        day = self.get_period_data(place, year, param, index)
+        return day[0] if len(day) else None
+
+
 class Day2Period(Correspondence):
 
     def get_day_data(self, place, year, param, index=0):
@@ -92,7 +103,7 @@ class Day2Period(Correspondence):
         return [float(x) for x in list(sheet[(~sheet[param].isin(['-']))][param])]
 
     def get_period_data(self, place, year, param=Param.TAVG.value, index=1):
-        return self.get_month_data(place, year, param, index)
+        return super().get_period_data(place, year, param, index)
 
 
 class Month2Month(Correspondence):
@@ -117,10 +128,10 @@ class Month2Month(Correspondence):
             }
 
     def get_first_month_data(self, place, year):
-        return self.get_month_data(place, year, index=0)
+        return self.get_period_data(place, year, index=0)
 
     def get_second_month_data(self, place, year):
-        return self.get_month_data(place, year, index=1)
+        return self.get_period_data(place, year, index=1)
 
 
 class Warm2Cold(Month2Month):
