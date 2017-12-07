@@ -2,14 +2,6 @@ from ed.proverb import Proverb
 
 
 class Kwiecien(Proverb):
-    """
-    Kwiecien plecien...
-
-    dni z temperatura: >17
-    dni z temperatura: <2
-    duza zmiennosc srednich temperatur?
-    jakis snieg?
-    """
     MIN_TEMP = 2
     MAX_TEMP = 17
     DAYS_THRESHOLD = 5

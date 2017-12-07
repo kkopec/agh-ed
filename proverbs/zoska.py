@@ -2,11 +2,6 @@ from ed.proverb import Proverb
 
 
 class ZimnaZoska(Proverb):
-    """
-    Zimnej Zośki/Zimnych Ogrodników
-
-    12-16 maja temperatura poniżej: 3
-    """
     LOW_TEMP = 3
 
     def __repr__(self):
