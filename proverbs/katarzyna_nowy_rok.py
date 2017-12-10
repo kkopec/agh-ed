@@ -26,4 +26,4 @@ class KatarzynaNowyRok(Day2Day):
         return diff_temp <= self.MAX_TEMP_DIFF and diff_prcp <= self.MAX_PRCP_DIFF
 
     def compare_days(self, day1, day2):
-        return abs(abs(day1)-abs(day2))
+        return abs(day1-day2)
