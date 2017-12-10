@@ -1,4 +1,4 @@
-from proverbs.correspondence import Warm2Cold
+from ed.proverb import Warm2Cold
 
 
 class LutyCieply(Warm2Cold):

@@ -1,5 +1,5 @@
 from ed.noaa import Param
-from proverbs.correspondence import Day2Day
+from ed.proverb import Day2Day
 
 
 class KatarzynaNowyRok(Day2Day):

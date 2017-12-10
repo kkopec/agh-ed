@@ -1,4 +1,4 @@
-from proverbs.correspondence import Day2Day
+from ed.proverb import Day2Day
 
 
 class KatarzynaBozeNarodzenie(Day2Day):

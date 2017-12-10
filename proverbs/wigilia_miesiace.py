@@ -1,4 +1,4 @@
-from proverbs.correspondence import Day2Month
+from ed.proverb import Day2Month
 
 
 class D2M13Styczen(Day2Month):

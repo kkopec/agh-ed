@@ -1,5 +1,5 @@
 from ed.noaa import Param
-from proverbs.correspondence import Day2Period
+from ed.proverb import Day2Period
 
 
 class WalentynkiDeszcz(Day2Period):
